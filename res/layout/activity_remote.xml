@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <ImageButton
+        android:id="@+id/aboutTurn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@android:drawable/ic_menu_rotate"
+        android:text="Button" />
+
+    <ImageButton
+        android:id="@+id/remoteTRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/right_arrow"
+        android:text="Button" />
+
+    <ImageButton
+        android:id="@+id/remoteTLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/left_arrow"
+        android:text="Button" />
+
+    <ToggleButton
+        android:id="@+id/connecBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:text="ToggleButton" />
+
+    <ImageButton
+        android:id="@+id/remoteBackward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/remoteTRight"
+        android:layout_toRightOf="@+id/remoteTLeft"
+        android:src="@drawable/down_arrow"
+        android:text="Button" />
+
+    <ImageButton
+        android:id="@+id/remoteForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/remoteTRight"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/up_arrow"
+        android:text="Button" />
+
+</RelativeLayout>

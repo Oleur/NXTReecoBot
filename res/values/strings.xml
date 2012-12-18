@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">NXTReecoBot</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_reeco_bot_launcher">ReecoBotLauncher</string>
+    <string name="title_activity_remote">Remote</string>
+    <string name="title_activity_driving_labyrinth">DrivingLabyrinth</string>
+    <string name="title_activity_world_exploration_standalone">WorldExplorationStandalone</string>
+
+</resources>

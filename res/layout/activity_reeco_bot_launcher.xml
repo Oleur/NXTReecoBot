@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="NXT ReecoBot"
+        android:textColor="#0000ff"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+    <RadioGroup
+        android:id="@+id/radioChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:checked="true"
+            android:text="Standalone Mode "
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rb2"
+            android:text="Remote Control"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/valide_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/radioChoice"
+        android:layout_marginTop="68dp"
+        android:background="#aeeaae"
+        android:paddingTop="5dp"
+        android:text=" Validate "
+        android:textStyle="bold"
+        android:typeface="serif" />
+
+</RelativeLayout>
