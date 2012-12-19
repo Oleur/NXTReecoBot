@@ -1,5 +1,6 @@
 package com.android.nxtreecobot;
 
+import com.android.nxtreecobot.remoteControl.LabyrinthExploreRemote;
 import com.android.nxtreecobot.remoteControl.Remote;
 
 import android.app.TabActivity;
@@ -30,7 +31,7 @@ private TabHost tabhost;
         //Second tab which launch the NXT in the labyrinth exploration mode.
         TabSpec tabExploreSpec = tabhost.newTabSpec("Labyrinth Exploration");
         tabExploreSpec.setIndicator("Labyrinth Exploration");
-        Intent remoteExploreIntent = new Intent(this, Remote.class);
+        Intent remoteExploreIntent = new Intent(this, LabyrinthExploreRemote.class);
         tabExploreSpec.setContent(remoteExploreIntent);
         
         //Third tab which launch the NXT in the world exploration mode.

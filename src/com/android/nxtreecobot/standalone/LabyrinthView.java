@@ -1,6 +1,10 @@
 package com.android.nxtreecobot.standalone;
 
+import com.android.nxtreecobot.R;
+
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,6 +19,10 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 	
 	private float targetX, targetY, radius;
 	private int flagCircle = 0;
+	private int flagBot = 0;
+	private int robotX = 225;
+	private int robotY = 275;
+	private Bitmap labyp1, labyp2, labyp3, labyp4, labyp5, labyp6, labyp7, labyp8, labyp9, labyp10 = null;
 
 	private boolean drawing = false;
 	
@@ -34,26 +42,36 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 		recPaint.setStrokeWidth(3);
 		
 		pLabyPaint.setColor(Color.RED);
+		
 		//Rectangle for the labyrinth contour.
-		canvas.drawRect(25, 25, 450, 575, recPaint);
-		//Rectangle for the shapes inside the labyrinth.
-		canvas.drawRect(25, 75, 300, 150, pLabyPaint);
-		canvas.drawRect(150, 150, 300, 225, pLabyPaint);
-		canvas.drawRect(350, 75, 450, 225, pLabyPaint);
-		canvas.drawRect(350, 275, 450, 375, pLabyPaint);
-		canvas.drawRect(350, 425, 450, 525, pLabyPaint);
-		canvas.drawRect(75, 425, 300, 525, pLabyPaint);
-		canvas.drawRect(25, 275, 300, 375, pLabyPaint);
-		canvas.drawRect(25, 200, 100, 275, pLabyPaint);
+		canvas.drawRect(25, 25, 475, 575, recPaint);
 		
-		
-		
-		if(drawing && flagCircle<1){
+		/*if(drawing && flagCircle<1){
 			canvas.drawCircle(targetX, targetY, 2, paint);
 			canvas.drawCircle(targetX, targetY, 20, paint);
 			canvas.drawCircle(targetX, targetY, 40, paint);
 			flagCircle++;
+		}*/
+		
+		if(drawing && flagBot == 1) {
+			moveRobot(canvas, flagBot);
+		} else if (drawing && flagBot == 2) {
+			moveRobot(canvas, flagBot);
+		} else if (drawing && flagBot == 3) {
+			moveRobot(canvas, flagBot);
+		} else if (drawing && flagBot == 4) {
+			moveRobot(canvas, flagBot);
+		} else {
+			
 		}
+	}
+
+	public int getFlagBot() {
+		return flagBot;
+	}
+
+	public void setFlagBot(int flagBot) {
+		this.flagBot = flagBot;
 	}
 
 	@SuppressWarnings("unused")
@@ -102,6 +120,18 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 		getHolder().addCallback(this);
 		thread = new MySurfaceThread(getHolder(), this);
 		
+		//Creation of the bitmaps for the pieces of labyrinth.
+		labyp1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p1);
+		labyp2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p2);
+		labyp3 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p3);
+		labyp4 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p4);
+		labyp5 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p5);
+		labyp6 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p6);
+		labyp7 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p7);
+		labyp8 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p8);
+		labyp9 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p9);
+		labyp10 = BitmapFactory.decodeResource(this.getResources(), R.drawable.laby_p10);
+		
 		setFocusable(true); // make sure we get key events
 		
 		paint.setStyle(Paint.Style.STROKE);
@@ -137,30 +167,37 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 	}
 	
 	/**
-	 * Make the robot going forward.
+	 * Make the robot moving on a given direction.
 	 */
-	public void goForward(Canvas c) {
-		
-	}
-	
-	/**
-	 * Make the robot going backward.
-	 */
-	public void goBackward(Canvas c) {
-		
-	}
-	/**
-	 * Make the robot turning on the left.
-	 */
-	public void turnLeft(Canvas c) {
-		
-	}
-	
-	/**
-	 * Make the robot turning on the right.
-	 */
-	public void turnRight(Canvas c) {
-		
+	public void moveRobot(Canvas c, int flag) {
+		drawing = true;
+		if(flag == 1) {
+			//Move forward
+			robotY -= 25;
+			c.drawBitmap(labyp2, robotX, robotY, paint);
+			c.drawBitmap(labyp2, robotX, robotY, paint);
+			flagBot = 0;
+		} else if (flag == 2) {
+			//Move backward
+			robotY += 25;
+			c.drawBitmap(labyp2, robotX, robotY, paint);
+			c.drawBitmap(labyp2, robotX, robotY, paint);
+			flagBot = 0;
+		} else if (flag == 3) {
+			//Move right.
+			robotX += 25;
+			c.drawBitmap(labyp1, robotX, robotY, paint);
+			c.drawBitmap(labyp2, robotX, robotY, paint);
+			flagBot = 0;
+		} else if (flag == 4) {
+			//Move left.
+			robotX -= 25;
+			c.drawBitmap(labyp1, robotX, robotY, paint);
+			c.drawBitmap(labyp2, robotX, robotY, paint);
+			flagBot = 0;
+		} else {
+			
+		}
 	}
 
 }

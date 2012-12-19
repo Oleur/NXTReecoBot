@@ -23,50 +23,65 @@ public final class R {
         public static final int ic_menu_map=0x7f020004;
         public static final int ic_tab_remote=0x7f020005;
         public static final int icon_robot=0x7f020006;
-        public static final int left_arrow=0x7f020007;
-        public static final int nxt_robot=0x7f020008;
-        public static final int right_arrow=0x7f020009;
-        public static final int up_arrow=0x7f02000a;
+        public static final int icon_stop=0x7f020007;
+        public static final int laby_p1=0x7f020008;
+        public static final int laby_p10=0x7f020009;
+        public static final int laby_p2=0x7f02000a;
+        public static final int laby_p3=0x7f02000b;
+        public static final int laby_p4=0x7f02000c;
+        public static final int laby_p5=0x7f02000d;
+        public static final int laby_p6=0x7f02000e;
+        public static final int laby_p7=0x7f02000f;
+        public static final int laby_p8=0x7f020010;
+        public static final int laby_p9=0x7f020011;
+        public static final int left_arrow=0x7f020012;
+        public static final int nxt_robot=0x7f020013;
+        public static final int right_arrow=0x7f020014;
+        public static final int up_arrow=0x7f020015;
     }
     public static final class id {
-        public static final int aboutTurn=0x7f08000b;
+        public static final int aboutTurn=0x7f08000c;
         public static final int autoNavButton=0x7f080000;
-        public static final int connecBluetooth=0x7f08000e;
+        public static final int connecBluetooth=0x7f08000f;
+        public static final int expBT=0x7f080006;
         public static final int labyGoBackward=0x7f080004;
         public static final int labyGoForward=0x7f080003;
         public static final int labyTurnLeft=0x7f080002;
         public static final int labyTurnRight=0x7f080005;
         public static final int labyrinthView=0x7f080001;
-        public static final int menu_settings=0x7f080011;
-        public static final int radioChoice=0x7f080007;
-        public static final int rb1=0x7f080008;
-        public static final int rb2=0x7f080009;
-        public static final int remoteBackward=0x7f08000f;
-        public static final int remoteForward=0x7f080010;
-        public static final int remoteTLeft=0x7f08000d;
-        public static final int remoteTRight=0x7f08000c;
-        public static final int textView1=0x7f080006;
-        public static final int valide_mode=0x7f08000a;
+        public static final int menu_settings=0x7f080012;
+        public static final int radioChoice=0x7f080008;
+        public static final int rb1=0x7f080009;
+        public static final int rb2=0x7f08000a;
+        public static final int remoteBackward=0x7f080010;
+        public static final int remoteForward=0x7f080011;
+        public static final int remoteTLeft=0x7f08000e;
+        public static final int remoteTRight=0x7f08000d;
+        public static final int textView1=0x7f080007;
+        public static final int valide_mode=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_driving_labyrinth=0x7f030000;
-        public static final int activity_reeco_bot_launcher=0x7f030001;
-        public static final int activity_remote=0x7f030002;
-        public static final int activity_world_exploration_standalone=0x7f030003;
-        public static final int layout_remote_control_tab=0x7f030004;
-        public static final int layout_tab_standalone=0x7f030005;
+        public static final int activity_labyrinth_explore_remote=0x7f030001;
+        public static final int activity_reeco_bot_launcher=0x7f030002;
+        public static final int activity_remote=0x7f030003;
+        public static final int activity_world_exploration_standalone=0x7f030004;
+        public static final int layout_remote_control_tab=0x7f030005;
+        public static final int layout_tab_standalone=0x7f030006;
     }
     public static final class menu {
         public static final int activity_driving_labyrinth=0x7f070000;
-        public static final int activity_reeco_bot_launcher=0x7f070001;
-        public static final int activity_remote=0x7f070002;
-        public static final int activity_world_exploration_standalone=0x7f070003;
+        public static final int activity_labyrinth_explore_remote=0x7f070001;
+        public static final int activity_reeco_bot_launcher=0x7f070002;
+        public static final int activity_remote=0x7f070003;
+        public static final int activity_world_exploration_standalone=0x7f070004;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
         public static final int menu_settings=0x7f050002;
         public static final int title_activity_driving_labyrinth=0x7f050005;
+        public static final int title_activity_labyrinth_explore_remote=0x7f050007;
         public static final int title_activity_reeco_bot_launcher=0x7f050003;
         public static final int title_activity_remote=0x7f050004;
         public static final int title_activity_world_exploration_standalone=0x7f050006;

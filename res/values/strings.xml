@@ -7,5 +7,6 @@
     <string name="title_activity_remote">Remote</string>
     <string name="title_activity_driving_labyrinth">DrivingLabyrinth</string>
     <string name="title_activity_world_exploration_standalone">WorldExplorationStandalone</string>
+    <string name="title_activity_labyrinth_explore_remote">LabyrinthExploreRemote</string>
 
 </resources>

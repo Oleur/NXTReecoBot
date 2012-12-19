@@ -1,10 +1,12 @@
 package com.android.nxtreecobot.standalone;
 
+import java.io.DataOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.drm.DrmEvent;
 import android.drm.DrmManagerClient;
@@ -60,18 +62,23 @@ public class DrivingLabyrinthStandalone extends Activity implements OnClickListe
 
 	@Override
 	public void onClick(View v) {
+		Canvas c = new Canvas();
 		switch (v.getId()) {
 		case R.id.labyGoForward:
-			//TODO: Move the robot forward.
+			labyrinth.moveRobot(c, 1);
+			labyrinth.setFlagBot(1);
 			break;
 		case R.id.labyGoBackward:
-			//TODO: Move backward.
-			break;
-		case R.id.labyTurnLeft:
-			//TODO: Turn Left.
+			labyrinth.moveRobot(c, 2);
+			labyrinth.setFlagBot(2);
 			break;
 		case R.id.labyTurnRight:
-			//TODO: Turn right.
+			labyrinth.moveRobot(c, 3);
+			labyrinth.setFlagBot(3);
+			break;
+		case R.id.labyTurnLeft:
+			labyrinth.moveRobot(c, 4);
+			labyrinth.setFlagBot(4);
 			break;
 		}
 	}

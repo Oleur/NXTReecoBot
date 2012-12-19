@@ -4,14 +4,12 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/autoNavButton"
+    <ToggleButton
+        android:id="@+id/expBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:padding="@dimen/padding_medium"
-        android:text="Labyrinth Exploration" />
+        android:layout_gravity="left"
+        android:padding="@dimen/padding_medium" />
 
     <FrameLayout
         android:layout_width="fill_parent"
