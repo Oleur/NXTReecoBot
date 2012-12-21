@@ -40,25 +40,33 @@ public final class R {
         public static final int up_arrow=0x7f020015;
     }
     public static final class id {
-        public static final int aboutTurn=0x7f08000c;
+        public static final int REGoBackward=0x7f08000b;
+        public static final int REGoForward=0x7f08000a;
+        public static final int REStopBot=0x7f08000d;
+        public static final int RETurnLeft=0x7f080009;
+        public static final int RETurnRight=0x7f08000c;
+        public static final int RElabyrinthView=0x7f080008;
+        public static final int aboutTurn=0x7f080013;
         public static final int autoNavButton=0x7f080000;
-        public static final int connecBluetooth=0x7f08000f;
+        public static final int connecBluetooth=0x7f080016;
         public static final int expBT=0x7f080006;
+        public static final int exploreButton=0x7f080007;
         public static final int labyGoBackward=0x7f080004;
         public static final int labyGoForward=0x7f080003;
         public static final int labyTurnLeft=0x7f080002;
         public static final int labyTurnRight=0x7f080005;
         public static final int labyrinthView=0x7f080001;
-        public static final int menu_settings=0x7f080012;
-        public static final int radioChoice=0x7f080008;
-        public static final int rb1=0x7f080009;
-        public static final int rb2=0x7f08000a;
-        public static final int remoteBackward=0x7f080010;
-        public static final int remoteForward=0x7f080011;
-        public static final int remoteTLeft=0x7f08000e;
-        public static final int remoteTRight=0x7f08000d;
-        public static final int textView1=0x7f080007;
-        public static final int valide_mode=0x7f08000b;
+        public static final int menu_explore=0x7f08001a;
+        public static final int menu_settings=0x7f080019;
+        public static final int radioChoice=0x7f08000f;
+        public static final int rb1=0x7f080010;
+        public static final int rb2=0x7f080011;
+        public static final int remoteBackward=0x7f080017;
+        public static final int remoteForward=0x7f080018;
+        public static final int remoteTLeft=0x7f080015;
+        public static final int remoteTRight=0x7f080014;
+        public static final int textView1=0x7f08000e;
+        public static final int valide_mode=0x7f080012;
     }
     public static final class layout {
         public static final int activity_driving_labyrinth=0x7f030000;

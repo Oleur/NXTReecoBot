@@ -33,15 +33,11 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 		// TODO Auto-generated method stub
 		//super.onDraw(canvas);
 		//Paints for the labyrinth.
-		
 		Paint recPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		Paint pLabyPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		
 		recPaint.setStyle(Paint.Style.STROKE);
 		recPaint.setColor(Color.RED);
 		recPaint.setStrokeWidth(3);
-		
-		pLabyPaint.setColor(Color.RED);
 		
 		//Rectangle for the labyrinth contour.
 		canvas.drawRect(25, 25, 475, 575, recPaint);
@@ -55,14 +51,18 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 		
 		if(drawing && flagBot == 1) {
 			moveRobot(canvas, flagBot);
+			drawing =  false;
 		} else if (drawing && flagBot == 2) {
 			moveRobot(canvas, flagBot);
+			drawing = false;
 		} else if (drawing && flagBot == 3) {
 			moveRobot(canvas, flagBot);
+			drawing = false;
 		} else if (drawing && flagBot == 4) {
 			moveRobot(canvas, flagBot);
+			drawing = false;
 		} else {
-			
+			drawing = false;
 		}
 	}
 
@@ -134,9 +134,7 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 		
 		setFocusable(true); // make sure we get key events
 		
-		paint.setStyle(Paint.Style.STROKE);
-		paint.setStrokeWidth(3);
-		paint.setColor(Color.WHITE);
+		paint.setFilterBitmap(true);
 	}
 
 	@Override
@@ -175,28 +173,24 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 			//Move forward
 			robotY -= 25;
 			c.drawBitmap(labyp2, robotX, robotY, paint);
-			c.drawBitmap(labyp2, robotX, robotY, paint);
 			flagBot = 0;
 		} else if (flag == 2) {
 			//Move backward
 			robotY += 25;
-			c.drawBitmap(labyp2, robotX, robotY, paint);
 			c.drawBitmap(labyp2, robotX, robotY, paint);
 			flagBot = 0;
 		} else if (flag == 3) {
 			//Move right.
 			robotX += 25;
 			c.drawBitmap(labyp1, robotX, robotY, paint);
-			c.drawBitmap(labyp2, robotX, robotY, paint);
 			flagBot = 0;
 		} else if (flag == 4) {
 			//Move left.
 			robotX -= 25;
 			c.drawBitmap(labyp1, robotX, robotY, paint);
-			c.drawBitmap(labyp2, robotX, robotY, paint);
 			flagBot = 0;
 		} else {
-			
+			flagBot = 0;
 		}
 	}
 

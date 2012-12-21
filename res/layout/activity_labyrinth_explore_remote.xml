@@ -4,12 +4,35 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <ToggleButton
-        android:id="@+id/expBT"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:padding="@dimen/padding_medium" />
+        android:orientation="horizontal">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activte BT: "/>
+        <ToggleButton
+	        android:id="@+id/expBT"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="left"
+	        android:padding="@dimen/padding_medium" />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="Exploration: "/>
+        <ToggleButton 
+            android:id="@+id/exploreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textOn="Explore..."
+            android:textOff="Manual"/>
+        
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -17,7 +40,7 @@
         android:layout_weight="1.41" >
 
         <com.android.nxtreecobot.standalone.LabyrinthView
-            android:id="@+id/labyrinthView"
+            android:id="@+id/RElabyrinthView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="0.65" />
@@ -30,31 +53,37 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/labyTurnLeft"
+            android:id="@+id/RETurnLeft"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:text="←" />
 
         <Button
-            android:id="@+id/labyGoForward"
+            android:id="@+id/REGoForward"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:text="↑" />
 
         <Button
-            android:id="@+id/labyGoBackward"
+            android:id="@+id/REGoBackward"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:text="↓" />
 
         <Button
-            android:id="@+id/labyTurnRight"
+            android:id="@+id/RETurnRight"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:text="→" />
+        
+        <Button 
+            android:id="@+id/REStopBot"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:text="■"/>
     </LinearLayout>
 
 </LinearLayout>
