@@ -27,6 +27,7 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.android.nxtreecobot.R;
+import com.android.nxtreecobot.comm.NXTComm.Direction;
 
 public class DrivingLabyrinthStandalone extends Activity implements OnClickListener {
 	
@@ -37,6 +38,16 @@ public class DrivingLabyrinthStandalone extends Activity implements OnClickListe
 	private Button backward;
 	private Button left;
 	private Button right;
+	private Direction direction;
+	
+    //Constants for matching the right piece of labyrinth with respect to the robot's perceptions.
+    public static final int OBJECT_CULDESAC = 100;
+    public static final int OBJECT_RIGHT_FRONT = 101;
+    public static final int OBJECT_RIGHT_LEFT = 102;
+    public static final int OBJECT_LEFT_FRONT = 103;
+    public static final int OBJECT_FRONT = 104;
+    public static final int OBJECT_LEFT = 105;
+    public static final int OBJECT_RIGHT = 106;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -58,6 +69,7 @@ public class DrivingLabyrinthStandalone extends Activity implements OnClickListe
         left.setOnClickListener(this);
         right.setOnClickListener(this);
         
+        direction = Direction.EAST;
     }
 
 	@Override
@@ -65,20 +77,50 @@ public class DrivingLabyrinthStandalone extends Activity implements OnClickListe
 		Canvas c = new Canvas();
 		switch (v.getId()) {
 		case R.id.labyGoForward:
-			labyrinth.moveRobot(c, 1);
-			labyrinth.setFlagBot(1);
+			if (direction == Direction.NORTH) {
+				//Move forward to the north.
+				labyrinth.moveRobot(c, 1, Direction.NORTH);
+				labyrinth.setFlagBot(1);
+			} else if (direction == Direction.SOUTH) {
+				//Move forward to the south.
+				labyrinth.moveRobot(c, 1, Direction.SOUTH);
+				labyrinth.setFlagBot(1);
+			} else if (direction == Direction.EAST) {
+				//Move forward to the east
+				labyrinth.moveRobot(c, 1, Direction.EAST);
+				labyrinth.setFlagBot(1);
+			} else if (direction == Direction.WEST) {
+				//Move forward to the west.
+				labyrinth.moveRobot(c, 1, Direction.WEST);
+				labyrinth.setFlagBot(1);
+			}
 			break;
 		case R.id.labyGoBackward:
-			labyrinth.moveRobot(c, 2);
+			labyrinth.moveRobot(c, 2, Direction.NORTH);
 			labyrinth.setFlagBot(2);
 			break;
 		case R.id.labyTurnRight:
-			labyrinth.moveRobot(c, 3);
+			labyrinth.moveRobot(c, 3, Direction.NORTH);
 			labyrinth.setFlagBot(3);
 			break;
 		case R.id.labyTurnLeft:
-			labyrinth.moveRobot(c, 4);
-			labyrinth.setFlagBot(4);
+			if (direction == Direction.NORTH) {
+				//Move forward to the north.
+				labyrinth.moveRobot(c, 4, Direction.NORTH);
+				labyrinth.setFlagBot(4);
+			} else if (direction == Direction.SOUTH) {
+				//Move forward to the south.
+				labyrinth.moveRobot(c, 4, Direction.SOUTH);
+				labyrinth.setFlagBot(4);
+			} else if (direction == Direction.EAST) {
+				//Move forward to the east
+				labyrinth.moveRobot(c, 4, Direction.EAST);
+				labyrinth.setFlagBot(4);
+			} else if (direction == Direction.WEST) {
+				//Move forward to the west.
+				labyrinth.moveRobot(c, 4, Direction.WEST);
+				labyrinth.setFlagBot(4);
+			}
 			break;
 		}
 	}

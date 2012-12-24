@@ -19,7 +19,7 @@ public class NXTComm {
     private DataOutputStream nxtDos = null;
 	private Context context;
 	
-	//Constant for moving the NXT and get sensor values.
+	//Constants for moving the NXT and get sensor values.
 	public static final String NXT_NAME = "GI_10"; 
     public static final int MOTOR_A_C_STOP = 0;
     public static final int MOTOR_A_FORWARD = 1;
@@ -32,7 +32,22 @@ public class NXTComm {
     public static final int TACHOCOUNT_RESET = 8;
     public static final int TACHOCOUNT_READ = 9;
     public static final int ACTION = 10;
-    public static final int DISCONNECT = 99;   
+    public static final int DISCONNECT = 99;
+    
+    public static final int OBJECT_CULDESAC = 100;
+    public static final int OBJECT_RIGHT_FRONT = 101;
+    public static final int OBJECT_RIGHT_LEFT = 102;
+    public static final int OBJECT_LEFT_FRONT = 103;
+    public static final int OBJECT_FRONT = 104;
+    public static final int OBJECT_LEFT = 105;
+    public static final int OBJECT_RIGHT = 106;
+
+    public static enum Direction {
+    	NORTH, 
+    	SOUTH, 
+    	EAST,
+    	WEST
+    }
 	
 	public NXTComm(Context context) {
 		this.context = context;
@@ -69,10 +84,10 @@ public class NXTComm {
         }
 	}
 	
-	public int readMessage(String nxt_name){
+	public Integer readMessage(String nxt_name){
 	    BluetoothSocket connSock;
 	    int n;
-	    //Swith nxt socket
+	    
 	    if(nxt_name.equals(NXT_NAME)){
 	        connSock=nxtBTsocket;
 	    } else {
@@ -81,8 +96,10 @@ public class NXTComm {
 
 	    if(connSock != null){
 	        try {
-	            InputStreamReader in=new InputStreamReader(connSock.getInputStream());
-	            n=in.read();
+	            //InputStreamReader in = new InputStreamReader(nxtBTsocket.getInputStream());
+	            nxtBTsocket.getInputStream().available();
+	            n = nxtBTsocket.getInputStream().read();
+	            System.out.println("plop: "+n);
 	            return n;
 	        } catch (IOException e) {
 	            // TODO Auto-generated catch block

@@ -1,6 +1,7 @@
 package com.android.nxtreecobot.standalone;
 
 import com.android.nxtreecobot.R;
+import com.android.nxtreecobot.comm.NXTComm.Direction;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -25,7 +26,7 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 	private Bitmap labyp1, labyp2, labyp3, labyp4, labyp5, labyp6, labyp7, labyp8, labyp9, labyp10 = null;
 
 	private boolean drawing = false;
-	
+	private Direction direction;
 	private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
 	@Override
@@ -50,16 +51,16 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 		}*/
 		
 		if(drawing && flagBot == 1) {
-			moveRobot(canvas, flagBot);
+			moveRobot(canvas, flagBot, direction);
 			drawing =  false;
 		} else if (drawing && flagBot == 2) {
-			moveRobot(canvas, flagBot);
+			moveRobot(canvas, flagBot, direction);
 			drawing = false;
 		} else if (drawing && flagBot == 3) {
-			moveRobot(canvas, flagBot);
+			moveRobot(canvas, flagBot, direction);
 			drawing = false;
 		} else if (drawing && flagBot == 4) {
-			moveRobot(canvas, flagBot);
+			moveRobot(canvas, flagBot, direction);
 			drawing = false;
 		} else {
 			drawing = false;
@@ -167,13 +168,28 @@ public class LabyrinthView extends SurfaceView implements SurfaceHolder.Callback
 	/**
 	 * Make the robot moving on a given direction.
 	 */
-	public void moveRobot(Canvas c, int flag) {
+	public void moveRobot(Canvas c, int flag, Direction dir) {
 		drawing = true;
+		direction = dir;
 		if(flag == 1) {
 			//Move forward
-			robotY -= 25;
-			c.drawBitmap(labyp2, robotX, robotY, paint);
-			flagBot = 0;
+			if (dir == Direction.NORTH) {
+				robotY -= 25;
+				c.drawBitmap(labyp2, robotX, robotY, paint);
+				flagBot = 0;
+			} else if (dir == Direction.SOUTH) {
+				robotY += 25;
+				c.drawBitmap(labyp2, robotX, robotY, paint);
+				flagBot = 0;
+			} else if (dir == Direction.EAST) {
+				robotX += 25;
+				c.drawBitmap(labyp1, robotX, robotY, paint);
+				flagBot = 0;
+			} else if (dir == Direction.WEST) {
+				robotX -= 25;
+				c.drawBitmap(labyp1, robotX, robotY, paint);
+				flagBot = 0;
+			}
 		} else if (flag == 2) {
 			//Move backward
 			robotY += 25;

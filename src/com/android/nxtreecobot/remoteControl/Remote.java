@@ -1,14 +1,6 @@
 package com.android.nxtreecobot.remoteControl;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Set;
-import java.util.UUID;
-
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
 import android.view.View;
@@ -33,7 +25,7 @@ public class Remote extends Activity implements OnClickListener, OnLongClickList
 	private ImageButton robotTLeft;
 	private ImageButton robotTRight;
 	
-	//Captor about the NXT.
+	//Constant for moving the NXT and get sensor values.
 	public static final String NXT_NAME = "GI_10"; 
     public static final int MOTOR_A_C_STOP = 0;
     public static final int MOTOR_A_FORWARD = 1;
@@ -46,13 +38,11 @@ public class Remote extends Activity implements OnClickListener, OnLongClickList
     public static final int TACHOCOUNT_RESET = 8;
     public static final int TACHOCOUNT_READ = 9;
     public static final int ACTION=10;
-    public static final int DISCONNECT = 99;   
+    public static final int DISCONNECT = 99;
     
     //Bluetooth variables
     private BluetoothSocket nxtBTsocket = null;
-    private DataOutputStream nxtDos = null;
     private NXTComm nxtComm = null;
-    private long timeDataSent = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +78,10 @@ public class Remote extends Activity implements OnClickListener, OnLongClickList
 		case R.id.remoteForward:
 			flagMove = 0;
 			nxtComm.sendNXTcommand(MOTOR_A_C_FORWARD, 180);
+			//Affiche le variable émise par le NXT
+			int var = nxtComm.readMessage(NXT_NAME);
+			Toast.makeText(this, "Variable: "+var, Toast.LENGTH_LONG).show();
+			
 			break;
 		case R.id.remoteBackward:
 			nxtComm.sendNXTcommand(MOTOR_A_BACKWARD, 180);
@@ -134,7 +128,6 @@ public class Remote extends Activity implements OnClickListener, OnLongClickList
 			//TODO: Make the robot turning on the right.
 			break;
 		case R.id.aboutTurn:
-			//TODO: Make a U-turn.
 			break;
 		}
 		return false;

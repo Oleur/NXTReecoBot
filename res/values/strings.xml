@@ -9,4 +9,9 @@
     <string name="title_activity_world_exploration_standalone">WorldExplorationStandalone</string>
     <string name="title_activity_labyrinth_explore_remote">LabyrinthExploreRemote</string>
 
+    <string name="direction_north">NORTH</string>
+    <string name="direction_south">SOUTH</string>
+    <string name="direction_east">EAST</string>
+    <string name="direction_west">WEST</string>
+    
 </resources>

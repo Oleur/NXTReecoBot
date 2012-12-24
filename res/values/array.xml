@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="direction_menu">
+        <item>@string/direction_north</item>
+        <item>@string/direction_south</item>
+        <item>@string/direction_east</item>
+        <item>@string/direction_west</item>
+    </array>
+</resources>
