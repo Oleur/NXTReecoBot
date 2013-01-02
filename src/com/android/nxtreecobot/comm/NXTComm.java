@@ -2,7 +2,6 @@ package com.android.nxtreecobot.comm;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Set;
 import java.util.UUID;
 
@@ -33,14 +32,6 @@ public class NXTComm {
     public static final int TACHOCOUNT_READ = 9;
     public static final int ACTION = 10;
     public static final int DISCONNECT = 99;
-    
-    public static final int OBJECT_CULDESAC = 100;
-    public static final int OBJECT_RIGHT_FRONT = 101;
-    public static final int OBJECT_RIGHT_LEFT = 102;
-    public static final int OBJECT_LEFT_FRONT = 103;
-    public static final int OBJECT_FRONT = 104;
-    public static final int OBJECT_LEFT = 105;
-    public static final int OBJECT_RIGHT = 106;
 
     public static enum Direction {
     	NORTH, 

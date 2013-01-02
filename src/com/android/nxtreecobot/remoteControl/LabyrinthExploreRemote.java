@@ -1,32 +1,38 @@
 package com.android.nxtreecobot.remoteControl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewDebug.ExportedProperty;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.RadioButton;
 import android.widget.ToggleButton;
 
+import com.android.nxtreecobot.LabyrinthView;
 import com.android.nxtreecobot.R;
 import com.android.nxtreecobot.comm.NXTComm;
 import com.android.nxtreecobot.comm.NXTComm.Direction;
-import com.android.nxtreecobot.standalone.LabyrinthView;
 
 public class LabyrinthExploreRemote extends Activity implements OnClickListener, OnCheckedChangeListener {
 	
 	private ToggleButton expConnecBT;
-	private ToggleButton exploreLaby;
+	private RadioButton exploreLaby;
+	private RadioButton exploreManual;
 	private Button driveF;
 	private Button driveB;
 	private Button driveR;
 	private Button driveL;
 	private Button stopBot;
+	private Button vExplo;
 	private LabyrinthView labyrinth;
 	private Direction robotDir;
 	
@@ -61,7 +67,8 @@ public class LabyrinthExploreRemote extends Activity implements OnClickListener,
         setContentView(R.layout.activity_labyrinth_explore_remote);
         
         expConnecBT = (ToggleButton) findViewById(R.id.expBT);
-    	exploreLaby = (ToggleButton) findViewById(R.id.exploreButton);
+    	exploreLaby = (RadioButton) findViewById(R.id.rbExplo);
+    	exploreManual = (RadioButton) findViewById(R.id.rbManual);
     	exploreLaby.setEnabled(false);
     	
     	driveF = (Button) findViewById(R.id.REGoForward);
@@ -69,6 +76,7 @@ public class LabyrinthExploreRemote extends Activity implements OnClickListener,
     	driveR = (Button) findViewById(R.id.RETurnRight);
     	driveL = (Button) findViewById(R.id.RETurnLeft);
     	stopBot = (Button) findViewById(R.id.REStopBot);
+    	vExplo = (Button) findViewById(R.id.validExplo);
     	labyrinth = (LabyrinthView) findViewById(R.id.RElabyrinthView);
     	
     	//Init BT connection
@@ -80,6 +88,8 @@ public class LabyrinthExploreRemote extends Activity implements OnClickListener,
     	driveB.setOnClickListener(this);
     	driveL.setOnClickListener(this);
     	driveR.setOnClickListener(this);
+    	stopBot.setOnClickListener(this);
+    	vExplo.setOnClickListener(this);
         
     }
 
@@ -92,34 +102,217 @@ public class LabyrinthExploreRemote extends Activity implements OnClickListener,
 	@Override
 	public void onClick(View v) {
 		int flagMove = 1;
+		int objectType = 0;
+		Canvas c = new Canvas();
 		switch (v.getId()) {
 		case R.id.remoteForward:
-			remoteBTco.sendNXTcommand(MOTOR_A_C_FORWARD, 180);
+			if (robotDir == Direction.NORTH) {
+				//Move forward to the north.
+				remoteBTco.sendNXTcommand(MOTOR_A_C_FORWARD, 180);
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				labyrinth.moveRobot(c, 1, Direction.NORTH, objectType);
+				labyrinth.setFlagBot(1);
+			} else if (robotDir == Direction.SOUTH) {
+				//Move forward to the south.
+				remoteBTco.sendNXTcommand(MOTOR_A_C_FORWARD, 180);
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				labyrinth.moveRobot(c, 1, Direction.SOUTH, objectType);
+				labyrinth.setFlagBot(1);
+			} else if (robotDir == Direction.EAST) {
+				//Move forward to the east
+				remoteBTco.sendNXTcommand(MOTOR_A_C_FORWARD, 180);
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				labyrinth.moveRobot(c, 1, Direction.EAST, objectType);
+				labyrinth.setFlagBot(1);
+			} else if (robotDir == Direction.WEST) {
+				//Move forward to the west.
+				remoteBTco.sendNXTcommand(MOTOR_A_C_FORWARD, 180);
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				labyrinth.moveRobot(c, 1, Direction.WEST, objectType);
+				labyrinth.setFlagBot(1);
+			}
 			break;
 		case R.id.REGoBackward:
-			remoteBTco.sendNXTcommand(MOTOR_A_BACKWARD, 180);
-			remoteBTco.sendNXTcommand(MOTOR_C_BACKWARD, 180);
+			if (robotDir == Direction.NORTH) {
+				//Move backward to the north.
+				remoteBTco.sendNXTcommand(MOTOR_A_BACKWARD, 180);
+				remoteBTco.sendNXTcommand(MOTOR_C_BACKWARD, 180);
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				labyrinth.moveRobot(c, 2, Direction.NORTH, objectType);
+				labyrinth.setFlagBot(2);
+			} else if (robotDir == Direction.SOUTH) {
+				//Move forward to the south.
+				remoteBTco.sendNXTcommand(MOTOR_A_BACKWARD, 180);
+				remoteBTco.sendNXTcommand(MOTOR_C_BACKWARD, 180);
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				labyrinth.moveRobot(c, 2, Direction.SOUTH, objectType);
+				labyrinth.setFlagBot(2);
+			} else if (robotDir == Direction.EAST) {
+				//Move forward to the east
+				remoteBTco.sendNXTcommand(MOTOR_A_BACKWARD, 180);
+				remoteBTco.sendNXTcommand(MOTOR_C_BACKWARD, 180);
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				labyrinth.moveRobot(c, 2, Direction.EAST, objectType);
+				labyrinth.setFlagBot(2);
+			} else if (robotDir == Direction.WEST) {
+				//Move forward to the west.
+				remoteBTco.sendNXTcommand(MOTOR_A_BACKWARD, 180);
+				remoteBTco.sendNXTcommand(MOTOR_C_BACKWARD, 180);
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				labyrinth.moveRobot(c, 2, Direction.WEST, objectType);
+				labyrinth.setFlagBot(2);
+			}
 			break;
 		case R.id.RETurnLeft:
-			if (flagMove == 0) {
-				remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
-				remoteBTco.sendNXTcommand(MOTOR_C_STOP, 0);
-				flagMove = 1;
-			} else {
-				remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+			if (robotDir == Direction.NORTH) {
+				//Move on the left and change of direction
+				if (flagMove == 0) {
+					remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+					remoteBTco.sendNXTcommand(MOTOR_C_STOP, 0);
+					flagMove = 1;
+				} else {
+					remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+				}
+				//Read the captor value from the nxt.
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				//Interact with the labyrinth 
+				labyrinth.moveRobot(c, 4, robotDir, objectType);
+				labyrinth.setFlagBot(4);
+				robotDir = Direction.WEST;
+			} else if (robotDir == Direction.SOUTH) {
+				//Move on the left and change of direction
+				if (flagMove == 0) {
+					remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+					remoteBTco.sendNXTcommand(MOTOR_C_STOP, 0);
+					flagMove = 1;
+				} else {
+					remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+				}
+				//Read the captor value from the nxt.
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				//Interact with the labyrinth
+				labyrinth.moveRobot(c, 4, robotDir, objectType);
+				labyrinth.setFlagBot(4);
+				robotDir = Direction.EAST;
+			} else if (robotDir == Direction.EAST) {
+				//Move forward to the east
+				if (flagMove == 0) {
+					remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+					remoteBTco.sendNXTcommand(MOTOR_C_STOP, 0);
+					flagMove = 1;
+				} else {
+					remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+				}
+				//Read the captor value from the nxt.
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				//Interact with the labyrinth
+				labyrinth.moveRobot(c, 4, robotDir, objectType);
+				labyrinth.setFlagBot(4);
+				robotDir = Direction.NORTH;
+			} else if (robotDir == Direction.WEST) {
+				//Move forward to the west.
+				if (flagMove == 0) {
+					remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+					remoteBTco.sendNXTcommand(MOTOR_C_STOP, 0);
+					flagMove = 1;
+				} else {
+					remoteBTco.sendNXTcommand(MOTOR_A_FORWARD, 180);
+				}
+				//Read the captor value from the nxt.
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				//Interact with the labyrinth
+				labyrinth.moveRobot(c, 4, robotDir, objectType);
+				labyrinth.setFlagBot(4);
+				robotDir = Direction.SOUTH;
 			}
 			break;
 		case R.id.RETurnRight:
-			if (flagMove == 0) {
-				remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
-				remoteBTco.sendNXTcommand(MOTOR_A_STOP, 0);
-				flagMove = 1;
-			} else {
-				remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+			if (robotDir == Direction.NORTH) {
+				//Move on the right and change of direction
+				if (flagMove == 0) {
+					remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+					remoteBTco.sendNXTcommand(MOTOR_A_STOP, 0);
+					flagMove = 1;
+				} else {
+					remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+				}
+				//Read the captor value from the nxt.
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				//Interact with the labyrinth
+				labyrinth.moveRobot(c, 3, robotDir, objectType);
+				labyrinth.setFlagBot(3);
+				robotDir = Direction.EAST;
+			} else if (robotDir == Direction.SOUTH) {
+				//Move on the right and change of direction
+				if (flagMove == 0) {
+					remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+					remoteBTco.sendNXTcommand(MOTOR_A_STOP, 0);
+					flagMove = 1;
+				} else {
+					remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+				}
+				//Read the captor value from the nxt.
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				//Interact with the labyrinth
+				labyrinth.moveRobot(c, 3, robotDir, objectType);
+				labyrinth.setFlagBot(3);
+				robotDir = Direction.WEST;
+			} else if (robotDir == Direction.EAST) {
+				//Move on the right and change of direction
+				if (flagMove == 0) {
+					remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+					remoteBTco.sendNXTcommand(MOTOR_A_STOP, 0);
+					flagMove = 1;
+				} else {
+					remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+				}
+				//Read the captor value from the nxt.
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				//Interact with the labyrinth
+				labyrinth.moveRobot(c, 3, robotDir, objectType);
+				labyrinth.setFlagBot(3);
+				robotDir = Direction.SOUTH;
+			} else if (robotDir == Direction.WEST) {
+				//Move on the right and change of direction
+				if (flagMove == 0) {
+					remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+					remoteBTco.sendNXTcommand(MOTOR_A_STOP, 0);
+					flagMove = 1;
+				} else {
+					remoteBTco.sendNXTcommand(MOTOR_C_FORWARD, 180);
+				}
+				//Read the captor value from the nxt.
+				objectType = remoteBTco.readMessage(NXT_NAME);
+				//Interact with the labyrinth
+				labyrinth.moveRobot(c, 3, robotDir, objectType);
+				labyrinth.setFlagBot(3);
+				robotDir = Direction.NORTH;
 			}
 			break;
 		case R.id.REStopBot:
 			remoteBTco.sendNXTcommand(MOTOR_A_C_STOP, 0);
+			break;
+		case R.id.validExplo:
+			if (exploreLaby.isChecked() && expConnecBT.isChecked()) {
+				exploreLaby.setEnabled(true);
+				List<Integer> listOT = new ArrayList<Integer>();
+		        listOT.add(OBJECT_RIGHT_LEFT);
+		        listOT.add(OBJECT_RIGHT_LEFT);
+		        listOT.add(OBJECT_RIGHT_FRONT);
+				for (Integer object : listOT) {
+					labyrinth.moveRobot(c, 1, robotDir, object);
+					labyrinth.setFlagBot(1);
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} else {
+				exploreLaby.setEnabled(false);
+				remoteBTco.sendNXTcommand(MOTOR_A_C_STOP, 0);
+			}
 			break;
 		}
 	}
@@ -136,13 +329,6 @@ public class LabyrinthExploreRemote extends Activity implements OnClickListener,
 				exploreLaby.setEnabled(false);
 			}
 			break;
-		case R.id.exploreButton:
-			//TODO: Send order to the NXT to explore the labyrinth.
-			if (isChecked || expConnecBT.isChecked()) {
-				exploreLaby.setEnabled(true);
-			} else {
-				exploreLaby.setEnabled(false);
-			}
 		}
 		
 	}

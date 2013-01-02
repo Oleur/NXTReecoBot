@@ -4,42 +4,56 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollV"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Activte BT: "/>
-        <ToggleButton
-	        android:id="@+id/expBT"
-	        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+        <LinearLayout
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_gravity="left"
-	        android:padding="@dimen/padding_medium" />
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="Exploration: "/>
-        <ToggleButton 
-            android:id="@+id/exploreButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:textOn="Explore..."
-            android:textOff="Manual"/>
-        
-    </LinearLayout>
+	        android:orientation="horizontal">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Activte BT: "/>
+	        <ToggleButton
+		        android:id="@+id/expBT"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="left"
+		        android:padding="@dimen/padding_medium" />
+	        <RadioGroup
+		        android:id="@+id/radioExplo"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content" >
+	
+		        <RadioButton
+		            android:id="@+id/rbManual"
+		            android:checked="true"
+		            android:text="Manual"
+		            android:textStyle="bold" />
+		
+		        <RadioButton
+		            android:id="@+id/rbExplo"
+		            android:text="Exploration"
+		            android:textStyle="bold" />
+		    </RadioGroup>
+		    <Button
+		        android:id="@+id/validExplo"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="Go!">
+		    </Button>
+    	</LinearLayout>
+    </ScrollView>
 
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="329dp"
         android:layout_weight="1.41" >
 
-        <com.android.nxtreecobot.standalone.LabyrinthView
+        <com.android.nxtreecobot.LabyrinthView
             android:id="@+id/RElabyrinthView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

@@ -23,13 +23,13 @@ public class StandaloneModeTab extends Activity {
         /*tabhost = getTabHost();
         
         //First tab to drive a virtual NXT.
-        TabSpec driveNXTspec = tabhost.newTabSpec("Driving");
+        TabSpec driveNXTspec = tabhost.newTabSpec("Labyrinth");
         driveNXTspec.setIndicator("Driving", getResources().getDrawable(R.drawable.ic_tab_remote));
         Intent driveIntent = new Intent(this, DrivingLabyrinthStandalone.class);
         driveNXTspec.setContent(driveIntent);
         
         //Second tab where the NXT will explore a map (labyrinth or continuous).
-        TabSpec exploreSpec = tabhost.newTabSpec("Exploration");
+        TabSpec exploreSpec = tabhost.newTabSpec("Complex Wolrd");
         exploreSpec.setIndicator("Exploration", getResources().getDrawable(R.drawable.ic_menu_map));
         Intent exploreIntent = new Intent(this, WorldExplorationStandalone.class);
         exploreSpec.setContent(exploreIntent);

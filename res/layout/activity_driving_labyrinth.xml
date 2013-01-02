@@ -18,7 +18,7 @@
         android:layout_height="329dp"
         android:layout_weight="1.41" >
 
-        <com.android.nxtreecobot.standalone.LabyrinthView
+        <com.android.nxtreecobot.LabyrinthView
             android:id="@+id/labyrinthView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
